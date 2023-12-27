@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html land="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> THE CALCULATOR </title>
+        <link rel="stylesheet" href="STYLES_CALCULADORA.css">
+        <link rel="icon" type="image/png" href="IMAGENES/LOGO.png"/>
+    </head>
+
+    <body>
+        <h1> THE CALCULATOR </h1>
+        <div id="calculadora">
+            <input type="text" id="pantalla" readonly>
+            <input type="button" value="√" onclick="agregar('√')" class="oscuros">
+            <input type="button" value="∛" onclick="agregar('∛')" class="oscuros">
+            <input type="button" value="^X" onclick="agregar('^')" class="oscuros">
+            <input type="button" value="%" onclick="agregar('%')" class="oscuros">
+            <br>
+            <input type="button" value="cos" onclick="agregar('cos')" class="oscuros">
+            <input type="button" value="sin" onclick="agregar('sin')" class="oscuros">
+            <input type="button" value="tan" onclick="agregar('tan')" class="oscuros">
+            <input type="button" value="1/" onclick="agregar('1'), agregar('/')" class="oscuros">
+            <br>
+            <input type="button" value="log" onclick="agregar('log')" class="oscuros">
+            <input type="button" value="ln" onclick="agregar('ln')"class="oscuros">
+            <input type="button" value="e" onclick="agregar('e')" class="oscuros">
+            <input type="button" value="π" onclick="agregar('π')" class="oscuros">
+            <br>
+            <input type="button" value="(" onclick="agregar('(')" class="distinto">
+            <input type="button" value=")" onclick="agregar(')')" class="distinto">
+            <input type="button" value="DEL" onclick="quitar()" class="distinto">
+            <input type="button" value="AC" onclick="limpiar()" class="distinto">
+            <br>
+            <input type="button" value="7" onclick="agregar('7')" class="claros">
+            <input type="button" value="8" onclick="agregar('8')" class="claros">
+            <input type="button" value="9" onclick="agregar('9')" class="claros">
+            <input type="button" value="/" onclick="agregar('/')" class="distinto">
+            <br>
+            <input type="button" value="4" onclick="agregar('4')" class="claros">
+            <input type="button" value="5" onclick="agregar('5')" class="claros">
+            <input type="button" value="6" onclick="agregar('6')" class="claros">
+            <input type="button" value="*" onclick="agregar('*')" class="distinto">
+            <br>
+            <input type="button" value="1" onclick="agregar('1')" class="claros">
+            <input type="button" value="2" onclick="agregar('2')" class="claros">
+            <input type="button" value="3" onclick="agregar('3')" class="claros">
+            <input type="button" value="+" onclick="agregar('+')" class="distinto">
+            <br>
+            <input type="button" value="0" onclick="agregar('0')" class="claros">
+            <input type="button" value="." onclick="agregar('.')"class="claros"> 
+            <input type="button" value="=" onclick="calcular()" class="claros">
+            <input type="button" value="-" onclick="agregar('-')" class="distinto">
+
+        </div>
+
+         <!-- FOOTER -->
+        <footer>
+        <hr>
+  
+        <img src="IMAGENES/LOGO.png" width="100px"/>
+        <p id="texto_logo"> DRACHEN </p>
+  
+        <div id="enlaces">
+            <a href="https://www.instagram.com/lucasbiolley/" target="_blank"> <img src="IMAGENES/INSTAGRAM.png" width="40px"/> </a>
+            <a href="https://twitter.com/DJVS_" target="_blank"> <img src="IMAGENES/TWIITER.png" width="40px"/> </a>
+            <a href="mailto:lucas.biolley@gmail.com" target="_blank"> <img src="IMAGENES/GMAIL.png" width="40px"/> </a>
+            <a href="https://github.com/DJ4S" target="_blank"> <img src="IMAGENES/GITHUB.png" width="40px"/> </a>
+            <a href="https://www.linkedin.com/in/lucas-biolley-262119267/" target="_blank"> <img src="IMAGENES/LINKEDIN.png" width="40px"/> </a>
+        </div>
+  
+        <p id="copy" align="center"> <span> © </span>2023 LUCAS BIOLLEY </p>
+
+        </footer>
+        
+        <script src="SCRIPT_CALCULADORA.js"></script>
+    </body>
+</html>

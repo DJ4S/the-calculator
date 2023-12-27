@@ -1,0 +1,158 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Exo+2:wght@400;600;700&display=swap');
+
+/*
+font-family: 'Bungee', sans-serif;
+font-family: 'Exo 2', sans-serif;
+*/
+
+body{
+    background-color: #f0f1f0;
+    width: 100%;
+    
+}
+
+h1{
+    text-align:center;
+    margin-top: 45px;
+    font-family: 'Bungee', sans-serif;
+}
+
+.oscuros{
+    background-color: #818a99;
+}
+
+.distinto{
+    background-color: #0b916f;
+}
+.claros{
+    background-color: #bdc3cb;
+}
+
+#calculadora{
+    width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px black;
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+#pantalla{
+    width: 90%;
+    height: 35px;
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    text-align: right;
+    border-radius: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input[type="button"]{
+    width: 90px;
+    height: 50px;
+    margin_right: 6px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 10px;
+    border: 1px;
+    cursor:pointer;
+}
+
+input[type="button"]:hover{
+    background-color: #b7b6d7;
+}
+
+input[type="button"]:last-child{
+    margin-right: 0;
+}
+
+/* CONTENEDOR FOOTER ---------------------------------------------------------- */
+
+footer {
+    margin: 0 auto;
+    width: 90%;
+  }
+      
+  footer hr{
+    width: 100%;
+    margin: 0 auto;
+  
+  }
+  
+  #copy{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 3px;
+    font-size: 20px;  
+    display: flex;
+    color: #2d6a4f;
+    justify-content: center;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  
+    align-items: center;
+    max-width: 80%;
+  }
+  
+  footer span {
+    font-size: 25px;
+    padding-right: 3px;
+    
+  }
+  
+  #texto_logo{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: flex;
+    color: #2d6a4f;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+  
+    align-items: center;
+  }
+  
+  footer > img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    margin-top: 10px;
+  
+  
+  }
+  
+  #enlaces{
+    display: flex;
+    max-width: 80%;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
+  #enlaces a {
+    margin-right: 25px;
+  }
+  
+  @media(max-width: 700px){
+  
+    footer {
+      margin: 0 auto;
+      width: 100%;
+    }
+  
+    #enlaces a {
+      margin-right: 10px;
+      
+    }
+  }
+  
