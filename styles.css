@@ -156,7 +156,7 @@ footer {
     }
   }
 
-  @media(max-width: 500px){
+@media(max-width: 500px){
     #calculadora{
       width: 300px;
       margin: 0 auto;
@@ -166,7 +166,7 @@ footer {
       box-shadow: 0 3px 5px black;
       text-align: center;
       margin-bottom: 75px;
-  }
+      }
   input[type="button"]{
     width: 70px;
     height: 40px;
@@ -177,5 +177,5 @@ footer {
     border-radius: 10px;
     border: 1px;
     cursor:pointer;
+    }
 }
-  }
