@@ -175,6 +175,9 @@ function arraySinParentesis(arrayEntrada){ //
                         else if( res == '1.0000000000'){
                             res = 1;
                         }
+                        else if( array[i+1] == '90'){
+                            res = 'Infinity';
+                        }
                         for (let z=0; z<g; z++){ // copiamos todo hasta el cos sin incluirlo
                             arrayAuxParentesis[arrayAuxParentesis.length] = array[z]; 
                         }
@@ -459,6 +462,9 @@ function calcular(string){
             }
             else if( res == '1.0000000000'){
                 res = 1;
+            }
+            else if( array[i+1] == '90'){
+                res = 'Infinity';
             }
             i=i+2;
             arrAux[arrAux.length] = res;
