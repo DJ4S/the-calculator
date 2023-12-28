@@ -61,6 +61,7 @@ input[type="button"]{
     border-radius: 10px;
     border: 1px;
     cursor:pointer;
+    color: black;
 }
 
 input[type="button"]:hover{
@@ -177,5 +178,6 @@ footer {
     border-radius: 10px;
     border: 1px;
     cursor:pointer;
+    color: black;
     }
 }
