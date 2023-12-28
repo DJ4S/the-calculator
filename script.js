@@ -175,7 +175,7 @@ function arraySinParentesis(arrayEntrada){ //
                         else if( res == '1.0000000000'){
                             res = 1;
                         }
-                        else if( array[i+1] == '90'){
+                        else if(array[g+1] == '90'){
                             res = 'Infinity';
                         }
                         for (let z=0; z<g; z++){ // copiamos todo hasta el cos sin incluirlo
