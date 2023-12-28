@@ -1,6 +1,6 @@
 let array = [];
 let arrayAnt = [];
-let stringRes = ''; // [(,cos,(,0,),/,sin,(,90,),)]
+let stringRes = ''; //
 
 function agregar(val){ // HECHO
     document.getElementById('pantalla').value += val; 
@@ -12,13 +12,13 @@ function limpiar(){ // HECHO
     array = [];
 }
 
-function quitar(){ // HACER //agregar 9, agregar 9, quitar, quitar
+function quitar(){ // HECHO
     document.getElementById('pantalla').value = '';
-    for (let a=0;  a<array.length-1; a++){ //array[0] = 9 = arrayAnt = array
+    for (let a=0;  a<array.length-1; a++){ // 
         arrayAnt[a] = array[a];
     }
     array = arrayAnt;
-    for (let b=0; b<array.length; b++){ //publicas 9
+    for (let b=0; b<array.length; b++){ // 
         document.getElementById('pantalla').value += ''+array[b]; 
     }
     arrayAnt=[];
@@ -34,9 +34,9 @@ function completar(arrEnt, num){ // HECHO
 
 function arrayNuevo(arrayEntrada){ // HECHO 
     let arrAuxiliar = [];
-    arrAuxiliar[0] = arrayEntrada[0]; // arrAuxiliar
+    arrAuxiliar[0] = arrayEntrada[0]; // 
     let num = 1;
-    while (num < array.length){   //1<12
+    while (num < array.length){   // 
         if ( (arrayEntrada[num] == '0' || arrayEntrada[num] == '1' || arrayEntrada[num] == '2' ||
         arrayEntrada[num] == '3' || arrayEntrada[num] == '4' || arrayEntrada[num] == '5' ||
         arrayEntrada[num] == '6' || arrayEntrada[num] == '7' || arrayEntrada[num] == '8' ||
@@ -46,7 +46,7 @@ function arrayNuevo(arrayEntrada){ // HECHO
         arrAuxiliar[arrAuxiliar.length-1] != '^' && arrAuxiliar[arrAuxiliar.length-1] != 'e'  && arrAuxiliar[arrAuxiliar.length-1] != '-' && 
         arrAuxiliar[arrAuxiliar.length-1] != '+' && arrAuxiliar[arrAuxiliar.length-1] != '√' && arrAuxiliar[arrAuxiliar.length-1] != '%' && arrAuxiliar[arrAuxiliar.length-1] != 'π'
         && arrAuxiliar[arrAuxiliar.length-1] != '(' && arrAuxiliar[arrAuxiliar.length-1] != ')' && arrAuxiliar[arrAuxiliar.length-1] != '∛') ){ // si es num y el anterior tb 
-            arrAuxiliar[arrAuxiliar.length-1] = ''+arrAuxiliar[arrAuxiliar.length-1]+arrayEntrada[num]; // [5.]
+            arrAuxiliar[arrAuxiliar.length-1] = ''+arrAuxiliar[arrAuxiliar.length-1]+arrayEntrada[num]; //
             num ++; // 
         }
         else if(arrayEntrada[num] == 'π'){
@@ -63,7 +63,7 @@ function arrayNuevo(arrayEntrada){ // HECHO
 
 let indiceA;
 let indiceC;
-function posParentesis(arrayEntrada){ // HECHO 
+function posParentesis(arrayEntrada){ // HECHO
     indiceA = -1;
     indiceC = -1;
     for (let a=0; a<arrayEntrada.length; a++){
@@ -80,7 +80,7 @@ function posParentesis(arrayEntrada){ // HECHO
     }
 }
 
-function arraySinParentesis(arrayEntrada){ //[(,cos,90,)]
+function arraySinParentesis(arrayEntrada){ //
     let arrayAuxParentesis = [];
     posParentesis(array); // indiceA y indiceB definidos
     while (indiceA != -1 && indiceC != -1){
@@ -166,8 +166,15 @@ function arraySinParentesis(arrayEntrada){ //[(,cos,90,)]
                         g = indiceA;
                     }
                     else if ( array[g] == 'tan'){ // si la pos es un cos
-                        let post= array[g+1];
+                        let post = array[g+1]*3.1415926535897932384626433832795/180;
                         let res = parseFloat(Math.tan(post)); // calculo el cos del numero siguiente
+                        res = res.toFixed(10);
+                        if( res == '0.0000000000'){
+                            res = 0;
+                        }
+                        else if( res == '1.0000000000'){
+                            res = 1;
+                        }
                         for (let z=0; z<g; z++){ // copiamos todo hasta el cos sin incluirlo
                             arrayAuxParentesis[arrayAuxParentesis.length] = array[z]; 
                         }
