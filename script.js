@@ -1,6 +1,6 @@
 let array = [];
 let arrayAnt = [];
-let stringRes = ''; //
+let stringRes = ''; // [(,cos,(,0,),/,sin,(,90,),)]
 
 function agregar(val){ // HECHO
     document.getElementById('pantalla').value += val; 
@@ -12,13 +12,13 @@ function limpiar(){ // HECHO
     array = [];
 }
 
-function quitar(){ // HECHO
+function quitar(){ // HACER //agregar 9, agregar 9, quitar, quitar
     document.getElementById('pantalla').value = '';
-    for (let a=0;  a<array.length-1; a++){ // 
+    for (let a=0;  a<array.length-1; a++){ //array[0] = 9 = arrayAnt = array
         arrayAnt[a] = array[a];
     }
     array = arrayAnt;
-    for (let b=0; b<array.length; b++){ // 
+    for (let b=0; b<array.length; b++){ //publicas 9
         document.getElementById('pantalla').value += ''+array[b]; 
     }
     arrayAnt=[];
@@ -34,9 +34,9 @@ function completar(arrEnt, num){ // HECHO
 
 function arrayNuevo(arrayEntrada){ // HECHO 
     let arrAuxiliar = [];
-    arrAuxiliar[0] = arrayEntrada[0]; // 
+    arrAuxiliar[0] = arrayEntrada[0]; // arrAuxiliar
     let num = 1;
-    while (num < array.length){   // 
+    while (num < array.length){   //1<12
         if ( (arrayEntrada[num] == '0' || arrayEntrada[num] == '1' || arrayEntrada[num] == '2' ||
         arrayEntrada[num] == '3' || arrayEntrada[num] == '4' || arrayEntrada[num] == '5' ||
         arrayEntrada[num] == '6' || arrayEntrada[num] == '7' || arrayEntrada[num] == '8' ||
@@ -46,7 +46,7 @@ function arrayNuevo(arrayEntrada){ // HECHO
         arrAuxiliar[arrAuxiliar.length-1] != '^' && arrAuxiliar[arrAuxiliar.length-1] != 'e'  && arrAuxiliar[arrAuxiliar.length-1] != '-' && 
         arrAuxiliar[arrAuxiliar.length-1] != '+' && arrAuxiliar[arrAuxiliar.length-1] != '√' && arrAuxiliar[arrAuxiliar.length-1] != '%' && arrAuxiliar[arrAuxiliar.length-1] != 'π'
         && arrAuxiliar[arrAuxiliar.length-1] != '(' && arrAuxiliar[arrAuxiliar.length-1] != ')' && arrAuxiliar[arrAuxiliar.length-1] != '∛') ){ // si es num y el anterior tb 
-            arrAuxiliar[arrAuxiliar.length-1] = ''+arrAuxiliar[arrAuxiliar.length-1]+arrayEntrada[num]; //
+            arrAuxiliar[arrAuxiliar.length-1] = ''+arrAuxiliar[arrAuxiliar.length-1]+arrayEntrada[num]; // [5.]
             num ++; // 
         }
         else if(arrayEntrada[num] == 'π'){
@@ -63,7 +63,7 @@ function arrayNuevo(arrayEntrada){ // HECHO
 
 let indiceA;
 let indiceC;
-function posParentesis(arrayEntrada){ // HECHO
+function posParentesis(arrayEntrada){ // HECHO 
     indiceA = -1;
     indiceC = -1;
     for (let a=0; a<arrayEntrada.length; a++){
@@ -77,6 +77,15 @@ function posParentesis(arrayEntrada){ // HECHO
                 }
             }
         }
+    }
+}
+
+let num = false;
+function esNumero(val){
+    if (val != 'sin' && val != 'cos' && val != 'tan' && val != 'log' && val != 'ln' && val != 'e' && 
+    val != '√' && val != '∛' && val != '%' && val != '+' && val != '-' && val != '*' && val != '/' &&
+    val != '^' && val != null ){
+        true;
     }
 }
 
@@ -106,7 +115,7 @@ function arraySinParentesis(arrayEntrada){ //
             for( let h=indiceA; h<indiceC; h++){ // cuantos super prioritario
                 if (array[h] == 'cos' || array[h] == 'sin' || array[h] == 'tan'
                 || arrayEntrada[h] == 'log' || arrayEntrada[h] == 'ln' || array[h] == 'e'
-                || array[h] == 'acos' || array[h] == '√'|| array[h] == '∛' || array[h] == '%'){
+                || array[h] == '√'|| array[h] == '∛' || array[h] == '%'){
                     contPrio++;
                 }
                 else if (array[h] == '*' || array[h] == '/' || array[h] == '^'){
@@ -127,7 +136,7 @@ function arraySinParentesis(arrayEntrada){ //
                             res = 0;
                         }
                         else if( res == '1.0000000000'){
-                            res = 1;
+                             res = 1;
                         }
                         for (let z=0; z<g; z++){ // copiamos todo hasta el cos sin incluirlo
                             arrayAuxParentesis[arrayAuxParentesis.length] = array[z]; 
@@ -146,11 +155,14 @@ function arraySinParentesis(arrayEntrada){ //
                         let post = array[g+1]*3.1415926535897932384626433832795/180;
                         let res = parseFloat(Math.sin(post)); // calculo el cos del numero siguiente
                         res = res.toFixed(10);
-                        if( res == '0.0000000000'){
+                        if( res == '+0.0000000000' || res == '-0.0000000000'){
                             res = 0;
                         }
                         else if( res == '1.0000000000'){
                             res = 1;
+                        }
+                        if((array[g+1]%90 == '0') && ((array[g+1]/90)%2 != 0)){
+                            res = undefined;
                         }
                         for (let z=0; z<g; z++){ // copiamos todo hasta el cos sin incluirlo
                             arrayAuxParentesis[arrayAuxParentesis.length] = array[z]; 
@@ -165,19 +177,9 @@ function arraySinParentesis(arrayEntrada){ //
                         contPrio--; //reduzco el contador de uno
                         g = indiceA;
                     }
-                    else if ( array[g] == 'tan'){ // si la pos es un cos
-                        let post = array[g+1]*3.1415926535897932384626433832795/180;
+                    else if (array[g] == 'tan'){ // si la pos es un cos
+                        let post= array[g+1];
                         let res = parseFloat(Math.tan(post)); // calculo el cos del numero siguiente
-                        res = res.toFixed(10);
-                        if( res == '0.0000000000'){
-                            res = 0;
-                        }
-                        else if( res == '1.0000000000'){
-                            res = 1;
-                        }
-                        else if(array[g+1] == '90'){
-                            res = 'Infinity';
-                        }
                         for (let z=0; z<g; z++){ // copiamos todo hasta el cos sin incluirlo
                             arrayAuxParentesis[arrayAuxParentesis.length] = array[z]; 
                         }
@@ -420,27 +422,41 @@ function calcular(string){
         }
     }
 
-    let i = 0;
+    let i = 0; // [cos] lenght = 1
     while(array.length > 1 && contPrio != 0){ // mientras queden super prioritarios
-        if (array[i] == 'cos'){
-            let res = Math.cos(array[i+1]*3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862/180);
-            res = res.toFixed(10);
-            if( res == '0.0000000000'){
-                res = 0;
-            }
-            else if( res == '1.0000000000'){
-                res = 1;
-            }
-            i=i+2; // i -> null
-            arrAux[arrAux.length] = res; // 
-            completar(arrAux,i); //nada
-            arrAux=[]; //arrAux
-            i=0;
-            contPrio--; // = 0
+        if (array[i] == 'cos'){ //si la siguiente no es un numero, devuelvo un array error en la formula, una varible error = true si es true al final impirmo mal
+                if (i+1 == array.length){
+                    contPrio = 0; 
+                    contSegPrio = 0;
+                    array = ['Sintax error'];
+                    arrAux = [];
+                    break;
+                }
+                let res = Math.cos(array[i+1]*3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862/180);
+                res = res.toFixed(10);
+                if( res == '0.0000000000'){
+                    res = 0;
+                }
+                else if( res == '1.0000000000'){
+                    res = 1;
+                }
+                i=i+2; // i -> null
+                arrAux[arrAux.length] = res; // 
+                completar(arrAux,i); //nada
+                arrAux=[]; //arrAux
+                i=0;
+                contPrio--; //si no es resto contPrio y los demas a 0, y array=[]
         }
         else if (array[i] == 'sin'){
+            if (i+1 == array.length){
+                contPrio = 0; 
+                contSegPrio = 0;
+                array = ['Sintax error'];
+                arrAux = [];
+                break;
+            }
             let res = Math.sin(array[i+1]*3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862/180);
-            res = res.toFixed(5);
+            res = res.toFixed(10);
             if( res == '0.0000000000'){
                 res = 0;
             }
@@ -455,16 +471,23 @@ function calcular(string){
             contPrio--;
         }
         else if (array[i] == 'tan'){
+            if (i+1 == array.length){
+                contPrio = 0; 
+                contSegPrio = 0;
+                array = ['Sintax error'];
+                arrAux = [];
+                break;
+            }
             let res = Math.tan(array[i+1]*3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862/180);
             res = res.toFixed(10);
-            if( res == '0.0000000000'){
+            if( res == '-0.0000000000' || res == '+0.0000000000'){
                 res = 0;
             }
             else if( res == '1.0000000000'){
                 res = 1;
             }
-            else if( array[i+1] == '90'){
-                res = 'Infinity';
+            if( (array[i+1]%90 == '0') && ((array[i+1]/90)%2 != '0') ){
+                res = 'undefined'
             }
             i=i+2;
             arrAux[arrAux.length] = res;
@@ -474,6 +497,13 @@ function calcular(string){
             contPrio--;
         }
         else if (array[i] == 'log'){
+            if (i+1 == array.length){
+                contPrio = 0; 
+                contSegPrio = 0;
+                array = ['Sintax error'];
+                arrAux = [];
+                break;
+            }
             let res = parseFloat(Math.log10(array[i+1]));
             i=i+2;
             arrAux[arrAux.length] = res;
@@ -483,6 +513,13 @@ function calcular(string){
             contPrio--;
         }
         else if (array[i] == 'ln'){
+            if (i+1 == array.length){
+                contPrio = 0; 
+                contSegPrio = 0;
+                array = ['Sintax error'];
+                arrAux = [];
+                break;
+            }
             let res = parseFloat(Math.log(array[i+1]));
             i=i+2;
             arrAux[arrAux.length] = res;
@@ -492,6 +529,13 @@ function calcular(string){
             contPrio--;
         }
         else if (array[i] == 'e'){
+            if (i+1 == array.length){
+                contPrio = 0; 
+                contSegPrio = 0;
+                array = ['Sintax error'];
+                arrAux = [];
+                break;
+            }
             let resNum = parseFloat(array[i+1]);
             let res = parseFloat(Math.exp(resNum));
             i=i+2;
@@ -502,6 +546,13 @@ function calcular(string){
             contPrio--;
         }
         else if (array[i] == '√'){
+            if (i+1 == array.length){
+                contPrio = 0; 
+                contSegPrio = 0;
+                array = ['Sintax error'];
+                arrAux = [];
+                break;
+            }
             let res = parseFloat(Math.sqrt(array[i+1]));
             i=i+2;
             arrAux[arrAux.length] = res;
@@ -521,6 +572,13 @@ function calcular(string){
             contPrio--;
         }
         else if (array[i] == '∛'){
+            if (i+1 == array.length){
+                contPrio = 0; 
+                contSegPrio = 0;
+                array = ['Sintax error'];
+                arrAux = [];
+                break;
+            }
             let res = parseFloat(Math.cbrt(array[i+1]));
             i=i+2;
             arrAux[arrAux.length] = res;
@@ -604,4 +662,3 @@ function calcular(string){
     stringRes = '' + resultado;
     document.getElementById('pantalla').value = stringRes;
 }
-
